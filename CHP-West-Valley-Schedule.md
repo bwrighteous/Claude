@@ -108,7 +108,7 @@ Sergeant sheet codes: S, FS, X, <u>X</u>, V, SRT, PSD.
 5. **Chase missing bids.** The Requests tab lists officers who haven't turned in RDOs, with **✉ Email reminder to these officers**.
 6. **Build the draft** on the Working Schedule. The **Staffing check** card lists days below priority for A, B and C watches.
 7. **Finalize & post.** Copies Working → Finalized and logs who posted it and when. On a re-post you choose to keep changes made directly on Finalized (sick days, etc.) or **Replace everything**.
-8. **Day-to-day changes** go on the Finalized Schedule. Pick your S# once; sick days, days off and PSD / SRT changes are stamped with it.
+8. **Day-to-day changes** go on the Finalized Schedule. Every change made after posting (sick call, discretionary vacation, erasing a day, any code) requires an S# (asked once per session). The cell gets a **red outline** and the sergeant's **S# in red in the bottom-right corner**. Setting a cell back to exactly what was posted removes both. The red marks show only on the Finalized Schedule, its printouts and the hallway monitors, never on Officer Requests or the Working Schedule. Re-posting with **Replace everything** starts clean; **Keep** keeps the outlined changes.
 
 ### Bid deadline
 
@@ -180,7 +180,7 @@ All data lives in the browser:
 | `chp-wva-snapshots-v3` | localStorage | Up to 12 automatic safety copies |
 | `chp-wva-session` | sessionStorage | Acting sergeant (S#) for this tab |
 
-**State shape (top level):** `people`, `marks` (Working), `finalMarks` (Finalized), `finalized` / `posted` (per month), `watches`, `priority`, `tags` (MEP/HEP), `dayFlags` (R/T days), `requests` (special requests), `rdoSubs` (RDO submissions per month), `rdoWindows` (deadline overrides / reopen), `specialties`, FLSA settings (`shiftRdos`, `shiftPremium`, `shortShift12`, `flsaCap`, `flsaEpoch`), `deadlineDay`, `lockAfterDeadline`, `requestEmail`, `log` (posting history per month). Marks are keyed `personId|YYYY-MM-DD`.
+**State shape (top level):** `people`, `marks` (Working), `finalMarks` (Finalized), `postedMarks` (copy of each month as posted, used to detect later changes), `finalized` / `posted` (per month), `watches`, `priority`, `tags` (MEP/HEP), `dayFlags` (R/T days), `requests` (special requests), `rdoSubs` (RDO submissions per month), `rdoWindows` (deadline overrides / reopen), `specialties`, FLSA settings (`shiftRdos`, `shiftPremium`, `shortShift12`, `flsaCap`, `flsaEpoch`), `deadlineDay`, `lockAfterDeadline`, `requestEmail`, `log` (posting history per month). Marks are keyed `personId|YYYY-MM-DD`.
 
 **Safety nets**
 
@@ -205,6 +205,7 @@ All data lives in the browser:
 | FLSA | `overlappingFlsa`, `requiredRdos`, `hoursForWorkDays` |
 | Special requests | `decideRequest`, `undoApplied`, `pendingRequests` |
 | Posting | `postMonth`, `finalizedOnlyChanges`, `logIt` |
+| Change marks | `isChanged`, `postedCode`, `showChanges` (red outline + S# on Finalized only) |
 | Routing / render | `route`, `go`, `render`, `renderBar`, `pgSchedule`, `pgRoster`, `pgSetup`, `pgOptions`, `pgRdo`, `pgKiosk` |
 | Email | `mailtoHref`, `emailDraft`, `remindMissing`, `emailLinks` |
 | Output | `printSheets`, `openDay`, `exportCsv`, `saveFile` |
