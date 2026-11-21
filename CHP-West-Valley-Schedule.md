@@ -164,7 +164,8 @@ Used for: officer RDO links, missing-bid reminders, emailing an individual offic
 
 - **Print** (current sheet) and **Print all** (all five sheets). Turn on *Background graphics* in the print dialog so colors print.
 - **Day roster:** Print / Save as PDF, plus working-units sheets for A/B/C.
-- **Hallway monitors:** open the file full screen at `#kiosk/A` (or B, C, SD, SGT). Shows the current month's Finalized Schedule (falls back to Working if not posted), refreshes every 60 seconds. `Esc` or **Exit full screen** returns to the app.
+- **📺 Publish for monitors** (Finalized tab, or Options → Hallway monitors): writes read-only pages for each sheet (`WVA-Monitor-A/B/C/SD/SGT.html`, plus `WVA-Monitor-Rotate.html`, which cycles through all five) into a folder on the network share. Each page reloads every minute, scales to fit the screen, carries this month and next (posted months only), and switches months on the 1st by itself. The folder is remembered in the browser (Edge/Chrome; Firefox downloads the files instead). The button turns gold with a • when the Finalized data has changed since the last publish. Full setup: [Hallway-Monitor-Setup.md](Hallway-Monitor-Setup.md).
+- **Live kiosk preview:** open the app at `#kiosk/A` (or B, C, SD, SGT). Shows the current month's Finalized Schedule from *this browser's* data (falls back to Working if not posted) and refreshes every 60 seconds. `Esc` or **Exit full screen** returns to the app.
 - **Export to Excel (CSV):** the current month, every person — Finalized if posted, otherwise Working.
 
 ---
@@ -207,6 +208,7 @@ All data lives in the browser:
 | Routing / render | `route`, `go`, `render`, `renderBar`, `pgSchedule`, `pgRoster`, `pgSetup`, `pgOptions`, `pgRdo`, `pgKiosk` |
 | Email | `mailtoHref`, `emailDraft`, `remindMissing`, `emailLinks` |
 | Output | `printSheets`, `openDay`, `exportCsv`, `saveFile` |
+| Monitors | `publishMonitors`, `monPageHtml`, `monMonths`, `monSig` / `monStale`, `MonDB` (remembers the folder in IndexedDB), `MON_FILES` |
 
 ---
 
